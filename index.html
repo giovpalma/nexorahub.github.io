@@ -1,1 +1,620 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nexora Contest — Candida la tua startup · Pomigliano d'Arco</title>
+<meta name="description" content="Contest per startupper prima dell'inaugurazione di Nexora Hub. Presenta la tua idea: i progetti selezionati salgono sul palco del Demo Day inaugurale ed entrano nell'ecosistema — postazione, mentoring e un ponte verso gli investitori." />
+<meta property="og:title" content="Nexora Contest — Candida la tua startup" />
+<meta property="og:description" content="Un contest per founder, team e studenti della Campania. Presenta la tua idea prima dell'inaugurazione di Nexora Hub." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/png" href="logo-nexora-hub.png" />
 
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Figtree:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --blue-900:#0E2E73;
+    --blue-800:#123A8F;
+    --blue-700:#164AA8;
+    --blue-600:#1E5BC6;
+    --blue-500:#2C7BD6;
+    --cyan-400:#4FB6E6;
+    --cyan-300:#84CDEE;
+    --ink:#141A24;
+    --text:#2A3140;
+    --text-soft:#586173;
+    --muted:#8A93A2;
+    --paper:#FFFFFF;
+    --paper-2:#F2F8FD;
+    --paper-3:#E7F1FB;
+    --line:rgba(20,26,36,.10);
+    --line-2:rgba(20,26,36,.08);
+    --brand-grad:linear-gradient(120deg,#123A8F 0%,#1E5BC6 48%,#4FB6E6 100%);
+    --radius:16px;
+    --maxw:1160px;
+    --shadow:0 24px 60px -28px rgba(18,58,143,.42);
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:"Figtree",system-ui,-apple-system,sans-serif;color:var(--text);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3{font-family:"Space Grotesk",sans-serif;font-weight:600;line-height:1.07;letter-spacing:-.02em;margin:0;color:var(--ink);}
+  p{margin:0;}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  .eyebrow{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-600);display:inline-flex;align-items:center;gap:.6em;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--blue-500);display:inline-block;opacity:.8;}
+  .on-dark .eyebrow{color:var(--cyan-300);}
+  .on-dark .eyebrow::before{background:var(--cyan-300);}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font-family:"Figtree",sans-serif;font-weight:600;font-size:1rem;padding:.85em 1.5em;border-radius:999px;cursor:pointer;border:1px solid transparent;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s,color .2s;white-space:nowrap;}
+  .btn-grad{background:var(--brand-grad);color:#fff;box-shadow:0 12px 28px -12px rgba(30,91,198,.75);}
+  .btn-grad:hover{transform:translateY(-2px);box-shadow:0 18px 38px -14px rgba(30,91,198,.85);}
+  .btn-outline{background:#fff;color:var(--blue-700);border-color:rgba(30,91,198,.28);}
+  .btn-outline:hover{border-color:var(--blue-500);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35);}
+  .btn-ghost:hover{border-color:#fff;transform:translateY(-2px);}
+  .btn-white{background:#fff;color:var(--blue-700);}
+  .btn-white:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+  .btn-lg{padding:1.05em 1.9em;font-size:1.05rem;}
+
+  /* ---------- Nav ---------- */
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-2);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;}
+  .brand img{height:34px;width:auto;}
+  .nav-links{display:flex;align-items:center;gap:2rem;}
+  .nav-links a{color:var(--text-soft);font-size:.95rem;font-weight:500;transition:color .2s;}
+  .nav-links a:hover{color:var(--blue-700);}
+  .nav-cta .btn{padding:.6em 1.2em;font-size:.92rem;}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;background:linear-gradient(180deg,#FFFFFF 0%,#EFF6FD 100%);overflow:hidden;}
+  #net{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(90deg,#F4F9FE 0%,rgba(244,249,254,.75) 34%,rgba(244,249,254,0) 62%),
+               radial-gradient(60% 60% at 92% 8%,rgba(79,182,230,.28),transparent 60%),
+               radial-gradient(50% 50% at 8% 100%,rgba(30,91,198,.10),transparent 60%);}
+  .hero-inner{position:relative;z-index:2;padding:92px 0 104px;}
+  .hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.4em .9em .4em .5em;font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-700);box-shadow:0 6px 18px -12px rgba(18,58,143,.5);margin-bottom:1.6rem;}
+  .hero-badge .pill{background:var(--brand-grad);color:#fff;border-radius:999px;padding:.25em .7em;font-size:.66rem;}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.4rem);max-width:16ch;}
+  .hero h1 .hl{background:var(--brand-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .hero .lede{margin-top:1.4rem;max-width:56ch;font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--text-soft);}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.2rem;}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:3.4rem;}
+  .stat{background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:1.15rem 1.25rem;box-shadow:0 14px 30px -26px rgba(18,58,143,.5);}
+  .stat .k{font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-600);}
+  .stat .v{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:1.12rem;margin-top:.4rem;color:var(--ink);}
+  .stat .v small{display:block;font-family:"Figtree";font-weight:400;font-size:.82rem;color:var(--muted);letter-spacing:0;margin-top:.15rem;}
+
+  /* ---------- Sections ---------- */
+  section{padding:92px 0;}
+  .sec-head{max-width:64ch;}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.9rem);margin-top:.9rem;}
+  .sec-head p.sub{margin-top:1rem;color:var(--text-soft);font-size:1.1rem;max-width:60ch;}
+
+  /* ---------- Ecosystem ---------- */
+  .eco{background:var(--paper);}
+  .eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:3rem;}
+  .eco-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s;}
+  .eco-card:hover{transform:translateY(-4px);box-shadow:0 24px 48px -28px rgba(18,58,143,.45);border-color:transparent;}
+  .eco-card .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(30,91,198,.12),rgba(79,182,230,.18));color:var(--blue-600);margin-bottom:1rem;}
+  .eco-card h3{font-size:1.15rem;}
+  .eco-card p{margin-top:.5rem;color:var(--text-soft);font-size:.96rem;}
+
+  /* ---------- Prize (brand blue) ---------- */
+  .prize{background:var(--brand-grad);color:#fff;position:relative;overflow:hidden;}
+  .prize::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 100% 0%,rgba(255,255,255,.16),transparent 55%);pointer-events:none;}
+  .prize .wrap{position:relative;z-index:1;}
+  .prize .sec-head h2{color:#fff;}
+  .prize .sec-head p.sub{color:rgba(255,255,255,.85);}
+  .prize-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;margin-top:3rem;align-items:stretch;}
+  .prize-list{display:grid;gap:14px;}
+  .prize-item{display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);border-radius:14px;padding:1.15rem 1.25rem;backdrop-filter:blur(4px);}
+  .prize-item .n{font-family:"Space Mono",monospace;color:#fff;font-size:.85rem;padding-top:.15rem;flex:none;opacity:.85;}
+  .prize-item h3{font-size:1.08rem;color:#fff;}
+  .prize-item p{margin-top:.25rem;color:rgba(255,255,255,.82);font-size:.94rem;}
+  .prize-aside{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);border-radius:var(--radius);padding:2rem;display:flex;flex-direction:column;justify-content:center;backdrop-filter:blur(4px);}
+  .prize-aside .tag{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan-300);margin-bottom:1rem;}
+  .prize-aside .big{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:1.9rem;line-height:1.12;color:#fff;}
+  .prize-aside p{margin-top:.8rem;color:rgba(255,255,255,.86);font-size:.98rem;}
+
+  /* ---------- Steps ---------- */
+  .steps{background:var(--paper-2);}
+  .step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;border-top:2px solid var(--paper-3);}
+  .step{padding:2rem 1.5rem 2rem 0;border-right:1px solid var(--line-2);position:relative;}
+  .step::before{content:"";position:absolute;top:-2px;left:0;width:46px;height:2px;background:var(--brand-grad);}
+  .step:last-child{border-right:0;}
+  .step .num{font-family:"Space Mono",monospace;font-size:.85rem;color:var(--blue-600);}
+  .step h3{font-size:1.2rem;margin-top:1.4rem;}
+  .step p{margin-top:.55rem;color:var(--text-soft);font-size:.95rem;padding-right:.5rem;}
+  .step .when{display:inline-block;margin-top:1rem;font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-700);background:#fff;border:1px solid var(--line);border-radius:999px;padding:.32em .8em;}
+
+  /* ---------- Audience ---------- */
+  .aud{background:var(--paper);}
+  .aud-flex{display:flex;flex-wrap:wrap;gap:12px;margin-top:2.4rem;}
+  .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.7em 1.2em;font-weight:500;font-size:.98rem;display:inline-flex;align-items:center;gap:.6em;}
+  .chip .dot{width:8px;height:8px;border-radius:50%;background:var(--brand-grad);}
+
+  /* ---------- Form ---------- */
+  .apply{background:var(--paper-2);}
+  .apply-card{background:#fff;border:1px solid var(--line-2);border-radius:24px;padding:clamp(1.6rem,4vw,3rem);box-shadow:var(--shadow);margin-top:2.6rem;}
+  .apply-head{margin-bottom:2rem;}
+  .apply-head h2{font-size:clamp(1.7rem,3vw,2.3rem);}
+  .apply-head p{color:var(--text-soft);margin-top:.6rem;max-width:52ch;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem 1.3rem;}
+  .field{display:flex;flex-direction:column;gap:.45rem;}
+  .field.full{grid-column:1 / -1;}
+  .field label{font-weight:600;font-size:.92rem;color:var(--ink);}
+  .field label .req{color:var(--blue-600);}
+  .field .hint{font-size:.82rem;color:var(--muted);font-weight:400;}
+  .field input,.field select,.field textarea{font-family:"Figtree",sans-serif;font-size:1rem;color:var(--text);background:#fff;border:1px solid var(--line);border-radius:11px;padding:.85em 1em;width:100%;transition:border-color .2s,box-shadow .2s;}
+  .field textarea{resize:vertical;min-height:120px;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue-500);box-shadow:0 0 0 3px rgba(46,123,214,.16);}
+  .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23586173' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1em center;padding-right:2.6em;}
+  .consent{grid-column:1/-1;display:flex;gap:.7rem;align-items:flex-start;font-size:.9rem;color:var(--text-soft);}
+  .consent input{width:20px;height:20px;flex:none;margin-top:2px;accent-color:var(--blue-600);}
+  .consent a{color:var(--blue-600);text-decoration:underline;}
+  .form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem;margin-top:.6rem;}
+  .form-foot .note{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden;}
+
+  .success{display:none;text-align:center;padding:2rem 1rem;}
+  .success.show{display:block;}
+  .success .badge{width:66px;height:66px;border-radius:50%;background:linear-gradient(135deg,rgba(30,91,198,.14),rgba(79,182,230,.2));color:var(--blue-600);display:grid;place-items:center;margin:0 auto 1.2rem;}
+  .success h3{font-size:1.6rem;}
+  .success p{margin-top:.7rem;color:var(--text-soft);max-width:44ch;margin-left:auto;margin-right:auto;}
+  .form-shell.sent .form-body{display:none;}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--paper);}
+  .faq-list{margin-top:2.6rem;border-top:1px solid var(--line);}
+  details{border-bottom:1px solid var(--line);}
+  summary{cursor:pointer;list-style:none;padding:1.3rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:1.12rem;color:var(--ink);}
+  summary::-webkit-details-marker{display:none;}
+  summary .pm{flex:none;width:26px;height:26px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:transform .25s var(--ease),background .2s,color .2s,border-color .2s;}
+  details[open] summary .pm{transform:rotate(45deg);background:var(--blue-600);color:#fff;border-color:var(--blue-600);}
+  details p{padding:0 0 1.4rem;color:var(--text-soft);max-width:70ch;}
+
+  /* ---------- Footer ---------- */
+  footer{background:linear-gradient(160deg,#0E2E73 0%,#123A8F 60%,#164AA8 100%);color:rgba(255,255,255,.72);padding:70px 0 40px;}
+  .foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:2rem;padding-bottom:2.4rem;border-bottom:1px solid rgba(255,255,255,.14);}
+  .foot-brand img{height:30px;width:auto;margin-bottom:1rem;}
+  .foot-brand p{max-width:40ch;font-size:.95rem;}
+  .foot-brand .tagline{margin-top:1.2rem;font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan-300);}
+  .foot-col h4{color:#fff;font-family:"Space Grotesk";font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:1rem;}
+  .foot-col a,.foot-col span{display:block;font-size:.94rem;margin-bottom:.6rem;color:rgba(255,255,255,.72);}
+  .foot-col a:hover{color:#fff;}
+  .foot-bottom{padding-top:1.8rem;font-size:.82rem;color:rgba(255,255,255,.55);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:900px){
+    .nav-links{display:none;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .eco-grid{grid-template-columns:repeat(2,1fr);}
+    .prize-grid{grid-template-columns:1fr;}
+    .step-grid{grid-template-columns:1fr 1fr;}
+    .step{border-right:0;border-bottom:1px solid var(--line-2);}
+    .foot-top{grid-template-columns:1fr 1fr;}
+    .foot-brand{grid-column:1/-1;}
+    .hero::after{background:linear-gradient(180deg,rgba(244,249,254,0) 40%,#EFF6FD 100%),radial-gradient(70% 40% at 90% 6%,rgba(79,182,230,.26),transparent 60%);}
+  }
+  @media(max-width:560px){
+    section{padding:64px 0;}
+    .hero-inner{padding:60px 0 72px;}
+    .stats{grid-template-columns:1fr;}
+    .eco-grid{grid-template-columns:1fr;}
+    .step-grid{grid-template-columns:1fr;}
+    .form-grid{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns:1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto;}
+    .btn:hover,.eco-card:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="top">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Nexora Hub">
+      <img src="logo-nexora-hub.png" alt="Nexora Hub" />
+    </a>
+    <nav class="nav-links" aria-label="Principale">
+      <a href="#contest">Il contest</a>
+      <a href="#premio">Cosa vinci</a>
+      <a href="#come">Come funziona</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#candidatura" class="btn btn-grad">Candidati</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Introduzione">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <span class="hero-badge"><span class="pill">Pre-inaugurazione</span> Contest per startupper</span>
+    <h1>Candida la tua idea.<br><span class="hl">Entra nell'ecosistema.</span></h1>
+    <p class="lede">Prima ancora di aprire le porte, Nexora Hub cerca le startup della Campania da far crescere. Presenta il tuo progetto: i migliori salgono sul palco del <strong>Demo Day inaugurale</strong> e ricevono postazione, mentoring e un ponte verso gli investitori.</p>
+    <div class="hero-cta">
+      <a href="#candidatura" class="btn btn-grad btn-lg">Candida la tua startup</a>
+      <a href="#come" class="btn btn-outline btn-lg">Come funziona</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="k">Candidature</div><div class="v">Aperte<small>fino al 30 settembre 2026</small></div></div>
+      <div class="stat"><div class="k">Demo Day</div><div class="v">Ottobre 2026<small>evento inaugurale</small></div></div>
+      <div class="stat"><div class="k">In palio</div><div class="v">Palco + Hub<small>postazione, mentoring, rete</small></div></div>
+      <div class="stat"><div class="k">Dove</div><div class="v">Pomigliano d'Arco<small>Campania (NA)</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ECOSYSTEM ============ -->
+<section class="eco" id="contest">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">L'ecosistema</span>
+      <h2>Più di uno spazio. Un ecosistema.</h2>
+      <p class="sub">Nexora Hub è un ecosistema di innovazione a Pomigliano d'Arco: coworking, formazione e advisory nello stesso posto — dove il lavoro incontra capitale, competenze e rete. Con questo contest apriamo le porte alle startup del territorio prima ancora dell'inaugurazione.</p>
+    </div>
+    <div class="eco-grid">
+      <article class="eco-card">
+        <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Fundraising</h3>
+        <p>Strategia di raccolta fondi, preparazione al pitch e ricerca dei finanziamenti giusti, con chi lavora nel fundraising da anni.</p>
+      </article>
+      <article class="eco-card">
+        <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+        <h3>Un ponte verso i capitali</h3>
+        <p>Accesso a investitori e strumenti di raccolta capitali, per far crescere davvero il tuo progetto.</p>
+      </article>
+      <article class="eco-card">
+        <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Mentoring e validazione</h3>
+        <p>Confronto vero sulla tua idea, senza giri di parole: cosa funziona e cosa no, prima che lo dica il mercato.</p>
+      </article>
+      <article class="eco-card">
+        <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M4 20c0-2.8 2.2-5 5-5s5 2.2 5 5M15 20c0-2 1-3.5 3-3.5s3 1.5 3 3.5"/></svg></div>
+        <h3>Una community che apre porte</h3>
+        <p>Eventi, incontri e una rete di founder, professionisti e imprese del territorio con cui collaborare.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIZE ============ -->
+<section class="prize on-dark" id="premio">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Il premio</span>
+      <h2>Cosa portano a casa i finalisti</h2>
+      <p class="sub">Non un assegno e via. Un ingresso reale dentro l'ecosistema, dal palco fino ai primi mesi di crescita.</p>
+    </div>
+    <div class="prize-grid">
+      <div class="prize-list">
+        <div class="prize-item"><span class="n">01</span><div><h3>Il palco del Demo Day inaugurale</h3><p>Presenti il tuo progetto davanti a investitori, partner e community, nell'evento che apre Nexora Hub.</p></div></div>
+        <div class="prize-item"><span class="n">02</span><div><h3>Postazione nell'Hub</h3><p>Mesi di coworking gratuito dentro l'ecosistema, per lavorare al progetto nel posto giusto.</p></div></div>
+        <div class="prize-item"><span class="n">03</span><div><h3>Mentoring dedicato</h3><p>Confronto vero su prodotto, mercato e fundraising con chi lo fa di mestiere.</p></div></div>
+        <div class="prize-item"><span class="n">04</span><div><h3>Un ponte verso gli investitori</h3><p>Accesso alla rete Nexora e agli strumenti di raccolta capitali per la fase successiva.</p></div></div>
+      </div>
+      <aside class="prize-aside">
+        <span class="tag">Il valore vero</span>
+        <div class="big">Non vinci un premio.<br>Entri in un ecosistema.</div>
+        <p>Il contest è solo l'inizio: i vincitori iniziano un percorso dentro Nexora Hub, tra spazi, competenze e connessioni che restano anche dopo l'evento.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="steps" id="come">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Come funziona</span>
+      <h2>Dalla candidatura al palco, in quattro passi.</h2>
+    </div>
+    <div class="step-grid">
+      <div class="step"><div class="num">01</div><h3>Candidatura</h3><p>Compili il modulo con la tua idea. Bastano pochi minuti: nessun costo, nessun impegno.</p><span class="when">Entro il 30/09/2026</span></div>
+      <div class="step"><div class="num">02</div><h3>Selezione</h3><p>Valutiamo i progetti e componiamo la shortlist dei finalisti che saliranno sul palco.</p><span class="when">Ottobre 2026</span></div>
+      <div class="step"><div class="num">03</div><h3>Demo Day</h3><p>I finalisti presentano il progetto all'inaugurazione, davanti a investitori e community.</p><span class="when">Inaugurazione</span></div>
+      <div class="step"><div class="num">04</div><h3>Dentro Nexora</h3><p>I vincitori iniziano il percorso nell'ecosistema: postazione, mentoring e rete.</p><span class="when">Dopo l'evento</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUDIENCE ============ -->
+<section class="aud">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">A chi è rivolto</span>
+      <h2>Se hai un'idea, il contest è per te.</h2>
+      <p class="sub">Non serve avere già una società, né un prodotto finito. Ci interessa il potenziale, non la perfezione.</p>
+    </div>
+    <div class="aud-flex">
+      <span class="chip"><span class="dot"></span>Founder singoli</span>
+      <span class="chip"><span class="dot"></span>Team early-stage</span>
+      <span class="chip"><span class="dot"></span>Studenti e ricercatori</span>
+      <span class="chip"><span class="dot"></span>PMI che innovano</span>
+      <span class="chip"><span class="dot"></span>Progetti dall'idea all'MVP</span>
+      <span class="chip"><span class="dot"></span>Primi ricavi</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLICATION FORM ============ -->
+<section class="apply" id="candidatura">
+  <div class="wrap">
+    <div class="sec-head" style="max-width:60ch">
+      <span class="eyebrow">Candidatura</span>
+      <h2>Candida la tua startup</h2>
+    </div>
+
+    <div class="apply-card form-shell" id="formShell">
+      <div class="form-body">
+        <div class="apply-head">
+          <h2>Raccontaci la tua idea</h2>
+          <p>Bastano pochi minuti. Nessun costo, nessun obbligo: ci racconti il progetto e, se rientra nella shortlist, ti scriviamo per il Demo Day.</p>
+        </div>
+
+        <!-- Netlify Forms: name + data-netlify + honeypot. Gli invii compaiono in Netlify > Forms. -->
+        <form name="candidatura-contest" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="applyForm" class="form-grid" action="/">
+          <input type="hidden" name="form-name" value="candidatura-contest" />
+          <p class="hp" aria-hidden="true"><label>Non compilare: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+          <div class="field">
+            <label for="nome">Nome e cognome <span class="req">*</span></label>
+            <input type="text" id="nome" name="nome" placeholder="Come ti chiami" required />
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="nome@email.it" required />
+          </div>
+
+          <div class="field">
+            <label for="telefono">Telefono <span class="hint">(facoltativo)</span></label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Per ricontattarti più in fretta" />
+          </div>
+          <div class="field">
+            <label for="startup">Nome del progetto / startup <span class="hint">(facoltativo)</span></label>
+            <input type="text" id="startup" name="startup" placeholder="Se ne ha già uno" />
+          </div>
+
+          <div class="field">
+            <label for="ruolo">Chi sei <span class="req">*</span></label>
+            <select id="ruolo" name="ruolo" required>
+              <option value="" selected disabled>Seleziona</option>
+              <option>Founder singolo</option>
+              <option>Team (2+ persone)</option>
+              <option>Studente / Ricercatore</option>
+              <option>PMI / Azienda</option>
+              <option>Altro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ambito">Ambito della startup <span class="req">*</span></label>
+            <select id="ambito" name="ambito" required>
+              <option value="" selected disabled>Seleziona il settore</option>
+              <option>AI &amp; Deeptech</option>
+              <option>Cybersecurity &amp; Sicurezza</option>
+              <option>Fintech &amp; Insurtech</option>
+              <option>Healthtech &amp; Biotech</option>
+              <option>Energia &amp; Sostenibilità</option>
+              <option>Agrifood &amp; Foodtech</option>
+              <option>Mobilità &amp; Logistica</option>
+              <option>SaaS &amp; Digitale</option>
+              <option>Impatto sociale</option>
+              <option>Altro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="stadio">Stadio del progetto <span class="req">*</span></label>
+            <select id="stadio" name="stadio" required>
+              <option value="" selected disabled>Seleziona</option>
+              <option>Idea</option>
+              <option>Prototipo</option>
+              <option>MVP</option>
+              <option>Primi ricavi</option>
+              <option>In crescita</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="link">Sito o link <span class="hint">(facoltativo)</span></label>
+            <input type="url" id="link" name="link" placeholder="Sito, pitch deck o LinkedIn" />
+          </div>
+
+          <div class="field full">
+            <label for="idea">La tua idea in breve <span class="req">*</span></label>
+            <textarea id="idea" name="idea" placeholder="Cosa fate, per chi e perché adesso. Bastano poche righe — dritte al punto." required></textarea>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" name="privacy" required />
+            <span>Acconsento al trattamento dei miei dati per essere ricontattato riguardo al contest e all'ecosistema Nexora Hub, come da <a href="#" target="_blank" rel="noopener">informativa privacy</a>. I dati non vengono ceduti a terzi.</span>
+          </label>
+
+          <div class="form-foot">
+            <button type="submit" class="btn btn-grad btn-lg">Invia la candidatura</button>
+            <span class="note">Gratuita · nessun obbligo · zero spam</span>
+          </div>
+        </form>
+      </div>
+
+      <div class="success" id="successPanel" role="status" aria-live="polite">
+        <div class="badge" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4 4 10-10"/></svg></div>
+        <h3>Candidatura ricevuta</h3>
+        <p>Grazie, l'abbiamo ricevuta. Se il tuo progetto rientra nella shortlist ti scriviamo per il Demo Day. Nel frattempo ci sentiamo solo per Nexora Hub.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Domande frequenti</span>
+      <h2>Le risposte che ti servono</h2>
+    </div>
+    <div class="faq-list">
+      <details><summary>Chi può candidarsi?<span class="pm" aria-hidden="true">+</span></summary><p>Chiunque abbia un'idea o una startup: founder singoli, team, studenti, ricercatori e PMI. Non serve avere già una società costituita.</p></details>
+      <details><summary>Quanto costa partecipare?<span class="pm" aria-hidden="true">+</span></summary><p>Niente. La candidatura è gratuita e non ti impegna a nulla — è una manifestazione d'interesse verso il contest e l'ecosistema.</p></details>
+      <details><summary>A che stadio deve essere il progetto?<span class="pm" aria-hidden="true">+</span></summary><p>Da semplice idea fino ai primi ricavi. Ci interessa il potenziale e la squadra, non un prodotto già perfetto.</p></details>
+      <details><summary>Cosa succede dopo la candidatura?<span class="pm" aria-hidden="true">+</span></summary><p>Valutiamo i progetti e componiamo la shortlist dei finalisti. Chi viene selezionato sale sul palco del Demo Day inaugurale di ottobre e riceve i dettagli via email.</p></details>
+      <details><summary>Devo cedere quote o diritti sull'idea?<span class="pm" aria-hidden="true">+</span></summary><p>No. Il contest non acquisisce diritti sul tuo progetto: resta tuo. Serve a farti conoscere e a farti entrare nell'ecosistema.</p></details>
+      <details><summary>Dove si terrà?<span class="pm" aria-hidden="true">+</span></summary><p>A Pomigliano d'Arco, nel cuore produttivo della Campania, nella nuova sede Nexora Hub. La location esatta viene comunicata ai candidati selezionati.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="logo-nexora-hub-white.png" alt="Nexora Hub" />
+        <p>Il contest startup che apre l'ecosistema Nexora Hub. Dove il lavoro incontra capitale, competenze e rete.</p>
+        <div class="tagline">Connect · Innovate · Accelerate</div>
+      </div>
+      <div class="foot-col">
+        <h4>Esplora</h4>
+        <a href="#contest">L'ecosistema</a>
+        <a href="#premio">Cosa vinci</a>
+        <a href="#come">Come funziona</a>
+        <a href="#candidatura">Candidati</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contatti</h4>
+        <a href="mailto:info@nexorahub.it">info@nexorahub.it</a>
+        <span>Pomigliano d'Arco (NA)</span>
+        <span>Roma</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Nexora Hub S.r.l. — Tutti i diritti riservati.</span>
+      <span>Contest startup · Pre-inaugurazione</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- Hero connection network (brand blue) ---------- */
+(function(){
+  const canvas = document.getElementById('net');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w, h, dpr, nodes = [], raf;
+
+  function size(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const r = canvas.getBoundingClientRect();
+    w = r.width; h = r.height;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    const count = Math.max(22, Math.min(52, Math.round(w*h/26000)));
+    nodes = [];
+    for(let i=0;i<count;i++){
+      nodes.push({
+        x: Math.random()*w, y: Math.random()*h,
+        vx:(Math.random()-.5)*0.16, vy:(Math.random()-.5)*0.16,
+        r: Math.random()*1.6+0.9,
+        cyan: Math.random()<0.4
+      });
+    }
+  }
+  const LINK = 150;
+  // weight visibility toward the right side so hero text stays clean
+  function weight(x){ return Math.min(1, Math.max(0.12, (x / w) * 1.15)); }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(let i=0;i<nodes.length;i++){
+      const a=nodes[i];
+      for(let j=i+1;j<nodes.length;j++){
+        const b=nodes[j];
+        const dx=a.x-b.x, dy=a.y-b.y, d=Math.hypot(dx,dy);
+        if(d<LINK){
+          const o=(1-d/LINK)*0.32*weight((a.x+b.x)/2);
+          ctx.strokeStyle='rgba(46,123,214,'+o+')';
+          ctx.lineWidth=0.8;
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        }
+      }
+    }
+    for(const n of nodes){
+      const wgt = weight(n.x);
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle = n.cyan ? 'rgba(79,182,230,'+(0.85*wgt)+')' : 'rgba(30,91,198,'+(0.8*wgt)+')';
+      ctx.fill();
+    }
+  }
+  function step(){
+    for(const n of nodes){
+      n.x+=n.vx; n.y+=n.vy;
+      if(n.x<0||n.x>w) n.vx*=-1;
+      if(n.y<0||n.y>h) n.vy*=-1;
+    }
+    draw();
+    raf=requestAnimationFrame(step);
+  }
+  window.addEventListener('resize', size);
+  size();
+  if(reduce){ draw(); } else { step(); }
+})();
+
+/* ---------- FAQ: one open at a time ---------- */
+document.querySelectorAll('.faq-list details').forEach(d=>{
+  d.addEventListener('toggle',()=>{
+    if(d.open){document.querySelectorAll('.faq-list details').forEach(o=>{if(o!==d)o.open=false;});}
+  });
+});
+
+/* ---------- Form: AJAX submit to Netlify + inline success ---------- */
+(function(){
+  const form = document.getElementById('applyForm');
+  const shell = document.getElementById('formShell');
+  const success = document.getElementById('successPanel');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const original = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Invio in corso…';
+    const data = new FormData(form);
+    fetch('/', {
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(data).toString()
+    })
+    .then(()=>{
+      shell.classList.add('sent');
+      success.classList.add('show');
+      success.scrollIntoView({behavior:'smooth', block:'center'});
+    })
+    .catch(()=>{
+      btn.disabled = false; btn.textContent = original;
+      alert('Qualcosa è andato storto nell\'invio. Riprova, oppure scrivici a info@nexorahub.it.');
+    });
+  });
+})();
+</script>
+</body>
+</html>
